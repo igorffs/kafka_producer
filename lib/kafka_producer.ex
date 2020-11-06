@@ -1,18 +1,11 @@
 defmodule KafkaProducer do
-  @moduledoc """
-  Documentation for KafkaProducer.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> KafkaProducer.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def publish(topic, partition, partition_key, message) do
+    :brod.produce_sync(
+      :kafka_client,
+      topic,
+      partition,
+      partition_key,
+      message
+    )
   end
 end
